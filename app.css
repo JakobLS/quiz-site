@@ -1,0 +1,349 @@
+
+
+
+/*###################*/
+/* General CSS styles*/
+/*####################*/
+* {
+    box-sizing: border-box;
+    background-color: white;
+    font-family: 'Arvo', serif;
+}
+
+.centered {
+    text-align:center;
+}
+
+.centered-content {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+h3 {
+    font-size: 1.0em;
+}
+
+.alternatives-area form label, p {
+    font-size: .8em;
+}
+
+.btn:hover {
+    cursor:pointer;
+    color: white;
+}
+
+.top-group {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 90vh;
+}
+
+.bottom-group {
+    display:flex;
+    flex-direction: row;
+    height: 10vh;
+}
+
+.btn {
+    text-align: center;
+    border-radius: 6px;
+    color:black;
+}
+
+.full-w {
+    width: 100vw;
+}
+
+
+
+/*####################################*/
+/* Styles applied on the Start Screen */
+/*####################################*/
+.main-container {
+    padding-top: 10vh;
+}
+
+.info-container h3 {
+    line-height: 8em;
+    font-size: 1.17em;
+}
+
+.info-container h1 span {
+    font-size: .1em;
+}
+
+.start-quiz-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10vh 0;
+}
+
+.start-quiz-btn, .start-new-quiz-btn {
+    font-size: 1.5em;
+    background-color: #B8D8BA;
+    border: 1px solid #B8D8BA;
+    padding: 1.5vh 4vw;
+}
+
+
+
+
+/*####################################*/
+/* Styles applied on the Quiz Screen */
+/*####################################*/
+
+.left-container {
+    width: 100%;
+    height: 60vh;
+}
+
+.right-container {
+    display:flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 30vh;
+    background-color:white;
+    margin: 0;
+}
+
+.counter-score-area {
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 60vw;
+}
+
+.image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:30vh;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image {
+    left:50%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.question-counter, .score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.question-area {
+    padding: 0 5vw;
+    height: 30vh;
+}
+
+.question-area p {
+    text-align: justify;
+    line-height: 25px;
+}
+
+.alternatives-area {
+    text-align:left;
+    padding: 0 5vw;
+    height: 30vh;
+}
+
+.alternatives-area label {
+    margin-left: 1em;
+}
+
+
+
+/* Align content in the center vertically (align-items) 
+   and on the right end horizontally (justify-content) */
+.next-area, .okay-area {
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 40vw;
+    height: 10vh;
+    text-align: right;
+    padding: 0 2vw 0 0;
+}
+
+.next-btn, .okay-btn {
+    font-size: 1em;
+    background-color: #AAD0E2;
+    border: 1px solid #AAD0E2;
+    padding: 1.5vh 4vw;
+}
+
+
+
+/*####################################*/
+/* Styles applied on the Answer Screen */
+/*####################################*/
+
+.answer-area {
+    display:flex;
+    align-items: center;
+    text-align: center;
+    height:  60vh;
+    padding: 0 5vw;
+}
+
+.space {
+    padding-bottom: 10vh;
+}
+
+.answer-area-small {
+    padding-bottom: 10vh;
+}
+
+.answer-area-small h3 {
+    font-size: 1.25em;
+}
+
+
+
+
+
+/*####################################*/
+/* Styles applied on the Final Screen */
+/*####################################*/
+
+
+.final-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-bottom: 20vh;
+}
+
+.points-container {
+    padding-bottom: 10vh;
+}
+
+.points-container h3 {
+    font-size: 1.3em;
+}
+
+.points-container h4 {
+    font-size: 3em;
+}
+
+
+
+
+/*########################################################*/
+/* Styles for when the window width is larger than 800px. */
+/*########################################################*/
+@media all and (min-width: 800px) {
+    /* General styles */
+    .top-group {
+        flex-direction: row;
+        padding:0;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    h3 {
+        font-size: 1.25em;
+    }
+    
+    .alternatives-area form label, p {
+        font-size: 1em;
+    }
+
+
+
+    /* Start screen styles */
+
+
+
+
+
+
+    /* Quiz screen */
+    .left-container {
+        width: 60vw;
+        height: 100vh;
+    }
+
+    .right-container {
+        flex-direction: column;
+        width: 40vw;
+        height: 100vh;
+    }
+
+    .image-section {
+        height: 90vh;
+        width: 100%;
+        padding: 0 2vw 10vh 0;
+    }
+
+    .question-counter, .score {
+        width: 50%;
+    }
+
+    .question-area {
+        height: 45vh;
+        padding: 0 5vw;
+    }
+
+    .alternatives-area {
+        height: 45vh;
+    }
+
+    .image {
+        max-width: 100%;
+        max-height: 100%;
+        top: 50%;
+    }
+
+    .counter-score-area {
+        flex-direction:row;
+        height: 10vh;
+    }
+
+    .counter-score-area p {
+        font-size: 0.8em;
+    }
+
+
+
+    /* Answer Screen */
+    .answer-area {
+        height: 100vh;
+    }
+
+    .answer-area-small {
+        margin-bottom: 10vh;
+        padding: 0;
+    }
+
+    .answer-area-small h3 {
+        font-size: 1.4em;
+    }
+
+}
+
+
