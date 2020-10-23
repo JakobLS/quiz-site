@@ -126,7 +126,7 @@ const quizInfo = {
   
       // Create input and label string for the alternative (using non-breaking space in html string)
       return `<input type="radio" name=q${qNbr} id=q${qNbr}${altNbr} value=${altNbr.toLowerCase()} alt=${altNLabel} ${altNbr === "A" ? "checked": ""}>
-      <label for=q${qNbr}${altNbr}>${altNbr}.&nbsp ${altNLabel}</label><br><br>`;
+      <label for=q${qNbr}${altNbr}>${altNbr}.&nbsp ${altNLabel}</label><br>`;
     };
   }
 
