@@ -81,8 +81,6 @@ const quizInfo = {
     score: 0};
   
 
-
-
   
 
 
@@ -96,6 +94,7 @@ const quizInfo = {
     return quizInfo.questions[getCurrentQuestionNumber()];
   }
 
+
   function getCurrentQuestionNumber() {
     // Function for returning current question number stored in the web storage
     return parseInt(sessionStorage.getItem("questionNumber"));
@@ -107,6 +106,7 @@ const quizInfo = {
     return parseInt(sessionStorage.getItem("score"));
   }
 
+
   function getNbrOfQuestions() {
     // Function for returning total number of questions in the quiz
     return quizInfo.questions.length;
@@ -116,8 +116,6 @@ const quizInfo = {
   function generateAlternativeElement(altNbr) {
     // Function that generates the alternatives html element
     if (getCurrentQuestion()) {
-      //console.log("'generateAlternativeElement' ran");
-
       // Get question number
       qNbr = getCurrentQuestionNumber();
   
@@ -133,9 +131,6 @@ const quizInfo = {
 
   function generateQnPElement() {
     // Function generating the current question number and total points html element. 
-    //console.log("'generateQnPElement' ran");
-
-    // Get current question and number of points
     const question = getCurrentQuestionNumber();
     const scores = getCurrentScore();
 
@@ -150,8 +145,6 @@ const quizInfo = {
 
   function generateSelectedCorrectElement() {
     // Function for generating the selected and correct answer html element.
-    //console.log("'generateSelectedCorrectElement' ran");
-
     // Get the correct answer for current question and corresponding string
     const correctAns = getCurrentQuestion().correctAnswer;
     const correctAnsStr = getCurrentQuestion().answers[correctAns];
@@ -169,8 +162,6 @@ const quizInfo = {
 
   function generateOkayButton() {
     // Function for generating the okay button in the answer page.
-    //console.log("'generateOkayButton' ran");
-
     // Get current question and total number of questions
     const currentQuestion = getCurrentQuestionNumber();
     const totNbrOfQuestions = getNbrOfQuestions();
@@ -184,7 +175,6 @@ const quizInfo = {
 
   function generateFinalScoreElement() {
     // Function for generating the final score html element on the final screen. 
-    //console.log("'generateFinalScoreElement' ran");
     return `<h3>Antal Poäng</h3>
             <h4>${getCurrentScore()} / ${getNbrOfQuestions()}</h4>`;
   }
@@ -197,10 +187,8 @@ const quizInfo = {
 
   function renderQuestion() {
     // Function for rendering a question in the quizInfo array
-    //console.log("'renderQuestion' ran");
-
-    // Create a paragraph string out of the question
     if (getCurrentQuestion()) {
+      // Create a paragraph string out of the question
       const currentQuestionString = '<p>'.concat(getCurrentQuestion().question, '</p>');
   
       // Render the question in the DOM
@@ -209,11 +197,8 @@ const quizInfo = {
   }
 
 
-
   function renderAlternatives() {
     // Function for rendering corresponding question alternatives in the DOM
-    //console.log("'renderAlternatives' ran");
-
     // Constants for keeping count of alternative number and storing resulting strings
     const alts = "ABC";
     const alternativesElement = [];
@@ -235,10 +220,7 @@ const quizInfo = {
 
   function renderImage() {
     // Function for rendering the image on the right hand side
-    //console.log("'renderImage' ran");
-
-    // Format image description
-    // replaceAll doesn't work on several common browsers such as Safari, Edge, Samsung etc.
+    // Format image description (replaceAll doesn't work on several common browsers such as Safari, Edge, Samsung etc.)
     const descr = getCurrentQuestion().imgSource.split(".")[0].split("-").join(" ");
 
     // Create image string
@@ -251,14 +233,12 @@ const quizInfo = {
 
   function renderQuestionAndPoints() {
     // Function for rendering current question and number of points
-    //console.log("'renderQuestionAndPoints' ran");
     $('.js-counter-score').html(generateQnPElement());
   }
 
 
   function renderQuizPage() {
     // This function renders the Quiz page in the DOM.
-    //console.log("'renderQuizPage' ran");
     renderQuestion();
     renderAlternatives();
     renderImage();
@@ -268,7 +248,6 @@ const quizInfo = {
 
   function renderAnswerPage() {
     // This function renders the Answer page in the DOM. 
-    //console.log("'renderAnswerPage' ran");
     $('.js-answer-area').html(generateSelectedCorrectElement());
     $('.js-okay-area').html(generateOkayButton());
   }
@@ -276,7 +255,6 @@ const quizInfo = {
 
   function renderFinalPage() {
     // This function renders the Final quiz page in DOM
-    //console.log("'renderFinalPage' ran");
     $('.js-final-score').html(generateFinalScoreElement());
   }
 
@@ -290,8 +268,6 @@ const quizInfo = {
   function handleStartQuizClicked() {
     // This function handles when the Start quiz button on the start (i.e. index) screen is clicked.  
     $('.js-start-quiz-btn').on('click', event => {
-      //console.log("'handleStartQuizClicked' ran");
-
       // Set initial values for the session web storage. Clear it first so the session starts clean. 
       sessionStorage.clear()
       sessionStorage.setItem("questionNumber", 0);
@@ -303,9 +279,7 @@ const quizInfo = {
   function handleNextClicked() {
     // This function handles when the Next button is clicked. 
     $('.js-next-btn').on('click', event => {
-      //console.log("'handleNextClicked' ran");
-
-      // First, get the selected answer
+      // Get the selected answer
       const name = `q${getCurrentQuestionNumber()}`;
       const selected = $(`[name=${name}]:checked`).val();
   
@@ -317,7 +291,6 @@ const quizInfo = {
 
   function checkIfCorrectAnswer(qNbr) {
     // Function for checking whether the correct alternative was selected for question number qNbr
-    //console.log("'checkIfCorrectAnswer' ran");
     if (quizInfo.questions[qNbr].correctAnswer == sessionStorage.getItem(`q${qNbr}`).toUpperCase()) {
       return true;
     } else {
@@ -328,7 +301,6 @@ const quizInfo = {
 
   function incrementQuestionNbr() {
     // Function for incrementing the question number
-    //console.log("'incrementQuestionNbr' ran");
     const qNbr = getCurrentQuestionNumber();
     if (qNbr < quizInfo.questions.length-1) {
       sessionStorage.setItem("questionNumber", qNbr+1);
@@ -338,7 +310,6 @@ const quizInfo = {
 
   function updateNbrOfPoints() {
     // Function for updating the number of points scored
-    //console.log("'updateNbrOfPoints' ran");
     const score = getCurrentScore();
     if (checkIfCorrectAnswer(getCurrentQuestionNumber())) {
       sessionStorage.setItem("score", score+1);
@@ -349,8 +320,6 @@ const quizInfo = {
   function handleOkayClicked() {
     // Function handling when the Okay button on the Answer page is clicked.
     $('.js-okay-area').on('click', '.js-okay-btn', event => {
-      //console.log("'handleOkayClicked' ran");
-
       // Increment score and question number accordingly (the score only if selected answer is correct)
       updateNbrOfPoints();
       incrementQuestionNbr();
@@ -361,8 +330,6 @@ const quizInfo = {
   function handleFinalClicked() {
     // Function handling when the Okay button on the Answer page is clicked.
     $('.js-okay-area').on('click', '.js-final-btn', event => {
-      //console.log("'handleFinalClicked' ran");
-
       // Increment score and question number accordingly (the score only if selected answer is correct)
       updateNbrOfPoints();
       incrementQuestionNbr();
@@ -373,8 +340,6 @@ const quizInfo = {
   function handleStartNewQuizClicked() {
     // Function handling clicks on the Start New Quiz button on the final page.
     $('.js-start-new-quiz-btn').on('click', event => {
-      //console.log("'handleStartNewQuizClicked' ran");
-
     // Set initial values for the session web storage. Clear it first so the session starts clean. 
     sessionStorage.clear()
     sessionStorage.setItem("questionNumber", 0);
